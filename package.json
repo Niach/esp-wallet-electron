@@ -1,11 +1,11 @@
 {
-  "name": "angular-electron",
+  "name": "esp-wallet-electron",
   "version": "7.1.0",
-  "description": "Angular 9 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "description": "Companion app for esp hardware wallet.",
+  "homepage": "https://github.com/Niach/esp-wallet-electron",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Dennis Strähhuber",
+    "email": "dennis.straehhuber@gmail.com
   },
   "keywords": [
     "angular",
@@ -14,7 +14,10 @@
     "typescript",
     "eslint",
     "spectron",
-    "sass"
+    "sass",
+    "bitcoin",
+    "hardware",
+    "wallet"
   ],
   "main": "main.js",
   "private": true,
