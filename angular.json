@@ -20,7 +20,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@angular/material/prebuilt-themes/purple-green.css"
             ],
             "scripts": [],
             "customWebpackConfig": {
@@ -146,6 +147,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
+            "eslintConfig": "e2e/eslintrc.e2e.json",
             "eslintConfig": "e2e/eslintrc.e2e.json",
             "tsConfig": [
               "e2e/tsconfig.e2e.json"

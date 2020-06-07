@@ -1,5 +1,31 @@
-<div class="container">
-  <h1 class="title">
-   HELLO WORLD
-  </h1>
-</div>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Devices</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <form #deviceForm="ngForm" (ngSubmit)="deviceForm.valid && addDevice()">
+      <mat-form-field>
+        <mat-label>name</mat-label>
+        <input name="name" #nameInput="ngModel" [(ngModel)]="newDevice.name" required matInput>
+        <mat-error *ngIf="nameInput.hasError('required')">
+          Please enter a name.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>ip</mat-label>
+        <input name="ip" #ipInput="ngModel" [(ngModel)]="newDevice.ip" required matInput>
+        <mat-error *ngIf="ipInput.hasError('required')">
+          Please enter a ip.
+        </mat-error>
+      </mat-form-field>
+      <button mat-button type="submit">Add</button>
+    </form>
+  </mat-card-actions>
+  <mat-card-content>
+    <mat-action-list>
+      <button *ngFor="let device of (devices | async)" (click)="viewDevice(device)" mat-list-item> {{device.name}} {{device.ip}} </button>
+    </mat-action-list>
+  </mat-card-content>
+
+</mat-card>

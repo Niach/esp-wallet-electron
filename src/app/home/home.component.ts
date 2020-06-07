@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { DeviceModel } from "../models/device.model";
+import { NgForm } from "@angular/forms";
+import { Observable } from "rxjs";
+import { DeviceService } from "../services/device.service";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('deviceForm') deviceForm: NgForm;
 
-  constructor(private router: Router) { }
+  devices: Observable<DeviceModel[]> = this.deviceService.getDevices();
 
-  ngOnInit(): void { }
+  newDevice: DeviceModel = {
+    ip: '',
+    name: ''
+  }
+  constructor(private router: Router, private  deviceService: DeviceService) { }
 
+  ngOnInit(): void {
+  }
+
+  addDevice() {
+    this.deviceService.addDevice({...this.newDevice});
+    this.deviceForm.resetForm();
+  }
+
+  async viewDevice(device: DeviceModel) {
+    await this.router.navigateByUrl(`/device/${device.name}`);
+  }
 }

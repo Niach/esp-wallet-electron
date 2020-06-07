@@ -1,0 +1,14 @@
+<div *ngIf="device">
+  {{device.name}} {{device.ip}}
+  <ng-container *ngIf="accounts$">
+    <div *ngIf="(accounts$ | async) as accounts">
+      <div *ngFor="let account of accounts; let i = index">
+        Account {{i}}:
+        <p *ngFor="let address of account.addresses">
+          {{address.value}}
+        </p>
+      </div>
+    </div>
+  </ng-container>
+
+</div>
