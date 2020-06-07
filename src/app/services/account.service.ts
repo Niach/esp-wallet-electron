@@ -26,13 +26,15 @@ export class AccountService {
     const accountsMap = this.accounts.getValue();
     const accounts = accountsMap[device.name] ? accountsMap[device.name] : [];
 
-    accountsMap[device.name] = accounts.concat({
-        addresses: addresses.map(address => {
-          return {
-            value: address
-          };
-        })
-      });
+    accounts[accountNumber] = {
+      addresses: addresses.map(address => {
+        return {
+          value: address
+        };
+      })
+    }
+
+    accountsMap[device.name] = accounts;
 
     this.accounts.next(accountsMap);
   }
